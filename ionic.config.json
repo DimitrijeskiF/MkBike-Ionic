@@ -1,0 +1,7 @@
+{
+  "name": "MkBike-Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
