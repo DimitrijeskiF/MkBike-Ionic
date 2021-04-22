@@ -1,0 +1,17 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    padding: 20px;
+    width: 210px;
+    margin: 20px;
+  }
+
+  ion-button {
+    margin: 30px;
+  }
+
+}

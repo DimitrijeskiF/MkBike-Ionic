@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,8 +11,14 @@ export class SlidesComponent implements OnInit {
     speed: 400
   };
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 
+
+  toPlans(){
+    this.router.navigate(['/plans'])
+  }
 }

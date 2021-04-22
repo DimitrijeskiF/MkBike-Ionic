@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { IntroPage } from './intro.page';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,11 @@ const routes: Routes = [
             {
                 path: 'signup',
                 loadChildren: () => import('../pages/signup/signup.module').then(m => m.SignupPageModule)
-            }
+            },
+            {
+                path: 'plans',
+                loadChildren: () => import('../pages/plans/plans.module').then(m => m.PlansPageModule)
+            },
         ]
     }
 ];

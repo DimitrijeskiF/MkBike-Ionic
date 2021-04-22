@@ -1,29 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center">Login</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding="true">
-  <img src="../../../assets/logo.png" class="smallLogo" />
+  <form role="form" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+    <img src="../../../assets/logo.jpg" alt="" />
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input
+        autocomplete="off"
+        type="email"
+        id="email"
+        ngModel
+        #email="ngModel"
+        name="email"
+        required
+        email
+      ></ion-input>
+      <!-- <small *ngIf="email.invalid && email.touched">Email is required</small> -->
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input
+        autocomplete="off"
+        type="password"
+        id="password"
+        ngModel
+        #password="ngModel"
+        name="password"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <a routerLink="/signup">Create Account</a>
+    </ion-item>
 
-  <h1>Sign In</h1>
-  <form>
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input autocomplete="off" type="text"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input autocomplete="off" type="password"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none">
-        <a routerLink="/signup">Create Account</a>
-      </ion-item>
-    </ion-list>
-    <ion-button expand="block" share="round" color="success">Login</ion-button>
+    <ion-button
+      expand="block"
+      type="submit"
+      share="round"
+      color="primary"
+      [disabled]="loginForm.form.invalid"
+      >Login</ion-button
+    >
   </form>
 </ion-content>
