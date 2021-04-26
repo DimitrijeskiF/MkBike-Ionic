@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(
+    private authService: AuthService
+  ) {}
+
+
+  onLogout() {
+    this.authService.logout();
+  }
 
 }

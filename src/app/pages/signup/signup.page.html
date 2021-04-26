@@ -1,18 +1,23 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-     <ion-buttons slot="start">
-      <ion-back-button defaultHref="login"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="arrow-back" [routerLink]="['/login']" routerLinkActive="router-link-active" ></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title> Registration</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">Login</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-
-<ion-content padding="true">
+<ion-content>
+  <div class="header">
+    <h1>Register</h1>
+    <img src="../../../assets/bike.jpg" />
+  </div>
   <form role="form" (submit)="onRegister(registerForm)" #registerForm="ngForm">
-    <img src="../../../assets/logo.jpg" alt="" />
-    <ion-item>
-      <ion-label position="stacked">First Name</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="text"
@@ -21,10 +26,10 @@
         #firstName="ngModel"
         name="firstName"
         required
+        placeholder="First name"
       ></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Last Name</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="text"
@@ -33,10 +38,10 @@
         #lastName="ngModel"
         name="lastName"
         required
+        placeholder="Last name"
       ></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Gender</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="text"
@@ -44,10 +49,10 @@
         ngModel
         #sex="ngModel"
         name="sex"
+        placeholder="Gender"
       ></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Age</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="number"
@@ -57,10 +62,10 @@
         #ages="ngModel"
         name="ages"
         required
+        placeholder="Age"
       ></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="email"
@@ -70,10 +75,11 @@
         name="email"
         required
         email
-      ></ion-input>
+        placeholder="Email"
+      >
+      </ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Password</ion-label>
+    <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
         type="password"
@@ -82,15 +88,15 @@
         #password="ngModel"
         name="password"
         required
+        placeholder="Password"
       ></ion-input>
     </ion-item>
     <ion-button
       expand="block"
+      shape="round"
       type="submit"
-      share="round"
-      color="primary"
       [disabled]="registerForm.form.invalid"
-      >Register</ion-button
+      >Login</ion-button
     >
   </form>
 </ion-content>

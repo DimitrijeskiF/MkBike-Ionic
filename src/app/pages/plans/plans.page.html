@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
@@ -7,4 +7,70 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content padding fit-content>
+  <ion-card>
+    <img src="../../../assets/young.jpg" />
+    <ion-card-header>
+      <ion-card-title>Plan for Young</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This package includes all users aged 11 to 26 years.
+    </ion-card-content>
+    <ion-item>
+      <ion-label>Per Day</ion-label>
+      <ion-note slot="end" color="primary">50 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per month</ion-label>
+      <ion-note slot="end" color="primary">300 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per Year</ion-label>
+      <ion-note slot="end" color="primary">3000 den.</ion-note>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <img src="../../../assets/workers.jpg" />
+    <ion-card-header>
+      <ion-card-title>Plan for Workers</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This package includes all users aged 27 to 61 years.
+    </ion-card-content>
+    <ion-item>
+      <ion-label>Per Day</ion-label>
+      <ion-note slot="end" color="primary">200 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per month</ion-label>
+      <ion-note slot="end" color="primary">500 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per Year</ion-label>
+      <ion-note slot="end" color="primary">5000 den.</ion-note>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <img src="../../../assets/retiree.jpg" />
+    <ion-card-header>
+      <ion-card-title>Plan for Retirees</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This package includes all users aged 62 and above.
+    </ion-card-content>
+    <ion-item>
+      <ion-label>Per Day</ion-label>
+      <ion-note slot="end" color="primary">100 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per month</ion-label>
+      <ion-note slot="end" color="primary">400 den.</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Per Year</ion-label>
+      <ion-note slot="end" color="primary">4000 den.</ion-note>
+    </ion-item>
+  </ion-card>
+
+  <ion-button expand="block" routerLink="/login">Continue</ion-button>
+</ion-content>

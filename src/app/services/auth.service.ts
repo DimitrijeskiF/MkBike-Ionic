@@ -83,7 +83,6 @@ export class AuthService {
           this.storage.set(this.TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken(res['token'])
           this.authenticationState.next(true);
-          this.checkToken();
           this.router.navigate(['/tabs'])
         })
       )
@@ -94,6 +93,8 @@ export class AuthService {
     this.storage.remove(this.TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
+
+    this.router.navigate(['/login'])
   }
 
   isAuthenticated() {
