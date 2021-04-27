@@ -9,16 +9,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-
-// export function jwtOptionsFactory(storage) {
-//   return {
-//     tokenGetter: () => {
-//       return storage.get('access_token');
-//     },
-//     whitelistedDomains: ['localhost:3000']
-//   }
-// }
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,16 +22,11 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     HttpClientModule,
     BrowserModule,
     IonicStorageModule.forRoot(),
-    // JwtModule.forRoot({
-    //   jwtOptionsProvider: {
-    //     provide: JWT_OPTIONS,
-    //     useFactory: jwtOptionsFactory,
-    //     deps: [Storage],
-    //   }
-    // })
+
   ],
   providers: [
     Storage,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

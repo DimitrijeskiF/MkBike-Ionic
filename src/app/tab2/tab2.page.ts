@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { MapService } from './../services/map.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit{
 
-  constructor() {}
+  constructor(
+    private mapService: MapService
+  ) {}
+
+  ngOnInit() {
+    this.mapService.buildMap();
+  }
 
 }
