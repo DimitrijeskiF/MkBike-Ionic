@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="user">
+    <div class="image">
+      <div *ngIf="!img">
+        <ion-icon name="person-circle-outline" class="pic"></ion-icon>
+        <div class="buttons">
+          <input
+            type="file"
+            style="display: none"
+            (change)="onFileSelected($event)"
+            #fileInput
+          />
+          <ion-button (click)="fileInput.click()" size="small" color="primary"
+            >Pick Picture</ion-button
+          >
+          <ion-button size="small" color="secondary" (click)="onUpload()"
+            >Upload</ion-button
+          >
+        </div>
+      </div>
+      <img
+        *ngIf="img"
+        [src]="img"
+        alt=""
+        style="margin-bottom: 20px"
+        class="pic"
+      />
+    </div>
+
+    <div class="item">
+      <p>First name:</p>
+      <p class="data">{{user.firstName}}</p>
+    </div>
+    <div class="item">
+      <p>Last name:</p>
+      <p class="data">{{user.lastName}}</p>
+    </div>
+    <div class="item">
+      <p>Age:</p>
+      <p class="data">{{user.ages}}</p>
+    </div>
+    <div class="item">
+      <p>Gender:</p>
+      <p class="data">{{user.sex}}</p>
+    </div>
+    <div class="item">
+      <p>Email:</p>
+      <p class="data">{{user.email}}</p>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { SignupPageModule } from './pages/signup/signup.module';
 import { SignupPageRoutingModule } from './pages/signup/signup-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -27,7 +28,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   providers: [
     Storage,
     Geolocation,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
