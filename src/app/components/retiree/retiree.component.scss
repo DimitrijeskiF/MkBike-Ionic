@@ -1,0 +1,64 @@
+.card {
+  height: auto;
+  width: auto;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+
+  img {
+    top: auto;
+    width: 30px;
+    height: 30px;
+  }
+
+  .subs {
+    margin-left: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .features {
+    margin-top: 20px;
+
+
+    li {
+      list-style: none;
+      margin-bottom: 20px;
+      font-size: 20px;
+      padding-bottom: 8px;
+    }
+
+    ion-icon {
+      margin-right: 10px;
+      color: #3880ff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .prices {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+
+    .price {
+      font-size: 19px;
+      padding-left: 8px;
+      text-transform: none;
+      font-weight: bold;
+    }
+  }
+
+
+  ion-button {
+    margin-top: 30px;
+    border-radius: 40px;
+  }
+
+}

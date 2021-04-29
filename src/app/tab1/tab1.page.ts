@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -18,6 +20,10 @@ export class Tab1Page implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  onSettings() {
+    this.router.navigate(['/settings'])
   }
 
 }

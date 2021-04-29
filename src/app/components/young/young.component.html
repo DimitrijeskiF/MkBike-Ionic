@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true" *ngIf="price">
+  <ion-card class="card">
+    <img src="../../assets/iconimage.png" alt="" />
+    <div class="subs">
+      <h2 class="title">Per Day</h2>
+      <div class="features">
+        <li>
+          <ion-icon class="icon" name="checkmark-outline"></ion-icon>Own 24h
+        </li>
+        <li>
+          <ion-icon name="checkmark-outline"></ion-icon>Book any day in week
+        </li>
+        <li>
+          <ion-icon name="checkmark-outline"></ion-icon>There is no kilometer
+          limit.
+        </li>
+      </div>
+    </div>
+
+    <p class="prices">Price: <small class="price">{{ price.day }} Den.</small></p>
+    <ion-button color="secondary" expand="block">Book Ticket</ion-button>
+  </ion-card>
+
+  <ion-card class="card">
+    <img src="../../assets/iconimage.png" alt="" />
+    <div class="subs">
+      <h2 class="title">Per Month</h2>
+      <div class="features">
+        <li>
+          <ion-icon class="icon" name="checkmark-outline"></ion-icon>Recommended
+        </li>
+        <li><ion-icon name="checkmark-outline"></ion-icon>Self service 24/7</li>
+         <li><ion-icon name="checkmark-outline"></ion-icon> Own 30 days whether it is in the middle of the month.</li>
+        <li>
+          <ion-icon name="checkmark-outline"></ion-icon>There is no kilometer
+          limit.
+        </li>
+      </div>
+    </div>
+
+    <p class="prices">Price: <small class="price">{{ price.month }} Den.</small></p>
+    <ion-button color="secondary" expand="block">Book Ticket</ion-button>
+  </ion-card>
+
+  <ion-card class="card">
+    <img src="../../assets/iconimage.png" alt="" />
+    <div class="subs">
+      <h2 class="title">Per Year</h2>
+      <div class="features">
+        <li>
+          <ion-icon class="icon" name="checkmark-outline"></ion-icon>Own 1 year
+          whether it is in the middle of the year
+        </li>
+        <li><ion-icon name="checkmark-outline"></ion-icon>Self service 24/7</li>
+        <li>
+          <ion-icon name="checkmark-outline"></ion-icon>There is no kilometer
+          limit.
+        </li>
+      </div>
+    </div>
+
+    <p class="prices">Price: <small class="price">{{ price.year }} Den.</small></p>
+    <ion-button color="secondary" expand="block">Book Ticket</ion-button>
+  </ion-card>
+</ion-content>

@@ -1,17 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title> Book Ticket </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content [fullscreen]="true" *ngIf="user">
+  <app-young *ngIf="user.position=='young'"></app-young>
+  <app-wroker *ngIf="user.position=='worker'"></app-wroker>
+  <app-retiree *ngIf="user.position=='retiree'"></app-retiree>
 </ion-content>
