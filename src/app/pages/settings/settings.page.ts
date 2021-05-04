@@ -1,4 +1,7 @@
+import { ThemeService } from './../../services/theme.service';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  isDark;
+
+  constructor(
+    private authService: AuthService,
+    private themeService: ThemeService
+  ) { }
 
   ngOnInit() {
+    this.isDark = this.themeService.darkMode;
+  }
+
+
+  onLogout() {
+    this.authService.logout();
+  }
+
+  toggleDarkMode() {
+   this.themeService.toggleAppTheme();
   }
 
 }

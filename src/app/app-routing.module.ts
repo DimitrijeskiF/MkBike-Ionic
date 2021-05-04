@@ -12,11 +12,12 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'settings',
-  //   loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule),
-  //   canActivate: [AuthGuard]
-  // },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule),
+    canActivate: [AuthGuard]
+  },
+
   // {
   //   path: 'plans',
   //   loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
@@ -44,4 +45,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

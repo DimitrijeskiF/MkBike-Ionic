@@ -17,16 +17,16 @@ ion-card {
   height: auto;
 }
 
-  .pic {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 20px;
-  }
+.pic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 20px;
+}
 
 
 
@@ -54,4 +54,8 @@ ion-card {
 
 .item:last-child {
   border: none;
+}
+
+ion-router-link {
+  margin: 20px;
 }

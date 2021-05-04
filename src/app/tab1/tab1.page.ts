@@ -18,10 +18,6 @@ export class Tab1Page implements OnInit {
   }
 
 
-  onLogout() {
-    this.authService.logout();
-  }
-
   onSettings() {
     this.router.navigate(['/settings'])
   }

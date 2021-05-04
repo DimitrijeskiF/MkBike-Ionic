@@ -1,12 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary">
-        <ion-icon slot="icon-only" name="arrow-back" [routerLink]="['/login']" routerLinkActive="router-link-active" ></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/login">Login</ion-button>
+      <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -96,7 +91,7 @@
       shape="round"
       type="submit"
       [disabled]="registerForm.form.invalid"
-      >Login</ion-button
+      >Sign up</ion-button
     >
   </form>
 </ion-content>

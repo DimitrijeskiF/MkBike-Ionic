@@ -1,5 +1,3 @@
-import { AuthRouter } from './../pages/auth.router';
-
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +13,6 @@ import { TabsPage } from './tabs.page';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    AuthRouter
   ],
   declarations: [TabsPage]
 })

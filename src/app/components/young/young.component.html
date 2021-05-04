@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" *ngIf="price">
   <ion-card class="card">
-    <img src="../../assets/iconimage.png" alt="" />
+    <ion-icon name="ticket-outline" color="primary"></ion-icon>
     <div class="subs">
       <h2 class="title">Per Day</h2>
       <div class="features">
@@ -17,12 +17,15 @@
       </div>
     </div>
 
-    <p class="prices">Price: <small class="price">{{ price.day }} Den.</small></p>
+    <p class="prices">
+      Price: <small class="price">{{ price.day }} Den.</small>
+    </p>
     <ion-button color="secondary" expand="block">Book Ticket</ion-button>
   </ion-card>
 
   <ion-card class="card">
-    <img src="../../assets/iconimage.png" alt="" />
+    <ion-icon name="ticket-outline" color="primary"></ion-icon>
+
     <div class="subs">
       <h2 class="title">Per Month</h2>
       <div class="features">
@@ -30,7 +33,10 @@
           <ion-icon class="icon" name="checkmark-outline"></ion-icon>Recommended
         </li>
         <li><ion-icon name="checkmark-outline"></ion-icon>Self service 24/7</li>
-         <li><ion-icon name="checkmark-outline"></ion-icon> Own 30 days whether it is in the middle of the month.</li>
+        <li>
+          <ion-icon name="checkmark-outline"></ion-icon> Own 30 days whether it
+          is in the middle of the month.
+        </li>
         <li>
           <ion-icon name="checkmark-outline"></ion-icon>There is no kilometer
           limit.
@@ -38,12 +44,15 @@
       </div>
     </div>
 
-    <p class="prices">Price: <small class="price">{{ price.month }} Den.</small></p>
+    <p class="prices">
+      Price: <small class="price">{{ price.month }} Den.</small>
+    </p>
     <ion-button color="secondary" expand="block">Book Ticket</ion-button>
   </ion-card>
 
   <ion-card class="card">
-    <img src="../../assets/iconimage.png" alt="" />
+    <ion-icon name="ticket-outline" color="primary"></ion-icon>
+
     <div class="subs">
       <h2 class="title">Per Year</h2>
       <div class="features">
@@ -59,7 +68,9 @@
       </div>
     </div>
 
-    <p class="prices">Price: <small class="price">{{ price.year }} Den.</small></p>
+    <p class="prices">
+      Price: <small class="price">{{ price.year }} Den.</small>
+    </p>
     <ion-button color="secondary" expand="block">Book Ticket</ion-button>
   </ion-card>
 </ion-content>
