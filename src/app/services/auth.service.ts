@@ -38,8 +38,6 @@ export class AuthService {
     this.storage.get(this.TOKEN_KEY).then(token => {
       let decoded = this.helper.decodeToken(token);
       let isExpired = this.helper.isTokenExpired(token);
-      console.log('Is expired: ' + isExpired);
-
 
       if (!isExpired) {
         this.user = decoded;
@@ -103,5 +101,5 @@ export class AuthService {
 
 
 
-  
+
 }

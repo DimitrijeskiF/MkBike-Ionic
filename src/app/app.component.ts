@@ -1,3 +1,4 @@
+import { EventsService } from './services/events.service';
 import { ThemeService } from './services/theme.service';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private platform: Platform,
     private storage: Storage,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private eventsService: EventsService
   ) {
     this.platform.ready().then(() => {
       this.storage.get(this.THEME_KEY)
