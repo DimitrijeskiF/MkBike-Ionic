@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mkbike-135bf": {
+      "hosting": {
+        "app": [
+          "mkbike-135bf"
+        ]
+      }
+    }
+  }
+}

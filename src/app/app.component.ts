@@ -1,10 +1,11 @@
+import { MessagingService } from './services/messaging.service';
 import { EventsService } from './services/events.service';
 import { ThemeService } from './services/theme.service';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,10 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private storage: Storage,
     private themeService: ThemeService,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private messagingService: MessagingService,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) {
     this.platform.ready().then(() => {
       this.storage.get(this.THEME_KEY)
@@ -34,5 +38,12 @@ export class AppComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/tabs'])
     }
+    this.requestPermission();
   }
+
+
+  requestPermission() {
+    this.messagingService.requestPermission().subscribe(
+    );
+}
 }

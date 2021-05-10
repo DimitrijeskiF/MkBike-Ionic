@@ -11,6 +11,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireMessagingModule } from '@angular/fire/messaging'
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +27,14 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     HttpClientModule,
     BrowserModule,
     IonicStorageModule.forRoot(),
-
+    ServiceWorkerModule.register('combined-sw.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireMessagingModule,
   ],
   providers: [
     Storage,
