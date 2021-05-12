@@ -20,10 +20,13 @@ export class MessagingService {
   requestPermission() {
     return this.afMessaging.requestToken.pipe(
       tap(token => {
-        console.log('Store token to server: ', token);
         this.createToken(token)
       })
     );
+  }
+
+  getMessages() {
+    return this.afMessaging.messages;
   }
 
 

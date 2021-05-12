@@ -32,6 +32,8 @@ export class AppComponent implements OnInit {
             this.themeService.setAppTheme(theme);
         })
     })
+
+    this.onDisplayNotification();
   }
 
   ngOnInit() {
@@ -46,4 +48,17 @@ export class AppComponent implements OnInit {
     this.messagingService.requestPermission().subscribe(
     );
 }
+
+
+  onDisplayNotification() {
+    this.messagingService.getMessages()
+      .subscribe(async(msg: any) => {
+        const alert = await this.alertCtrl.create({
+          header: msg.notification.title,
+          subHeader: msg.notification.body,
+          buttons: ['OK'],
+        })
+        await alert.present();
+      })
+  }
 }
