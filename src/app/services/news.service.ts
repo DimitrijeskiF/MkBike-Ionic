@@ -26,6 +26,7 @@ export class NewsService {
           return {
             news: newsData.news.map(news => {
               return {
+                id: news._id,
                 title: news.title,
                 img: news.img,
                 content: news.content
@@ -34,5 +35,9 @@ export class NewsService {
           }
         })
       ).toPromise();
+  }
+
+  deleteNews(newsId: string) {
+    return this.http.delete(this.BACKEND_URL + `/news/${newsId}`);
   }
 }

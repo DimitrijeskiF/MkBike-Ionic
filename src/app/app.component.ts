@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.storage.get(this.THEME_KEY)
         .then(theme => {
-            this.themeService.setAppTheme(theme);
+          this.themeService.setAppTheme(theme);
         })
     })
 
@@ -47,12 +47,12 @@ export class AppComponent implements OnInit {
   requestPermission() {
     this.messagingService.requestPermission().subscribe(
     );
-}
+  }
 
 
   onDisplayNotification() {
     this.messagingService.getMessages()
-      .subscribe(async(msg: any) => {
+      .subscribe(async (msg: any) => {
         const alert = await this.alertCtrl.create({
           header: msg.notification.title,
           subHeader: msg.notification.body,

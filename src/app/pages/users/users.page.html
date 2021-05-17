@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item *ngFor="let user of users">
+      <ion-avatar slot="start">
+        <img  src="../../../assets/profile.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <h2><b>First name: </b>{{user.firstName}}</h2>
+        <h2><b>Last name: </b>{{user.lastName}}</h2>
+        <h3><b>Email:</b> {{user.email}}</h3>
+      </ion-label>
+       <ion-button
+        *ngIf="user.role != 'admin'"
+        slot="end"
+        color="danger"
+        type="clear"
+        size="medium"
+       (click)="onDeleteUser(user.id)"
+        ><ion-icon name="trash"></ion-icon
+      ></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

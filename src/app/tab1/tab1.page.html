@@ -13,9 +13,13 @@
 
   <ion-list>
     <ion-title>Weekly Events:</ion-title>
+    <ion-card *ngIf="!events">
+      <ion-card-content>There are no events this week! </ion-card-content>
+    </ion-card>
+
     <ion-item *ngFor="let event of events">
-      <ion-avatar slot="start" >
-        <img  [src]="event.thumbnail" />
+      <ion-avatar slot="start">
+        <img [src]="event.thumbnail" />
       </ion-avatar>
       <ion-label>
         <p class="title">{{event.title}}</p>
@@ -23,6 +27,15 @@
         <p>Date: {{event.date | date}}</p>
         <a [href]="event.link" target="_blank">View More</a>
       </ion-label>
+      <ion-button
+        *ngIf="role == 'admin'"
+        slot="end"
+        color="danger"
+        type="clear"
+        size="medium"
+        (click)="onDeleteEvent(event.id)"
+        ><ion-icon name="trash"></ion-icon
+      ></ion-button>
     </ion-item>
   </ion-list>
 
@@ -33,8 +46,16 @@
       <ion-card-header>
         <ion-card-title>{{news.title}}</ion-card-title>
       </ion-card-header>
-
       <ion-card-content> {{news.content}} </ion-card-content>
+      <ion-button
+        *ngIf="role == 'admin'"
+        (click)="onDeleteNews(news.id)"
+        expand="full"
+        color="danger"
+      >
+        <ion-icon name="trash" slot="end"></ion-icon>
+        Delete News
+      </ion-button>
     </ion-card>
   </ion-list>
 </ion-content>

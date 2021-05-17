@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { ThemeService } from './../../services/theme.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,14 +12,18 @@ import { Component, OnInit } from '@angular/core';
 export class SettingsPage implements OnInit {
 
   isDark;
+  role;
 
   constructor(
     private authService: AuthService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private userService: UserService
+
   ) { }
 
   ngOnInit() {
     this.isDark = this.themeService.darkMode;
+    this.onGetRole();
   }
 
 
@@ -27,7 +32,14 @@ export class SettingsPage implements OnInit {
   }
 
   toggleDarkMode() {
-   this.themeService.toggleAppTheme();
+    this.themeService.toggleAppTheme();
+  }
+
+  onGetRole() {
+    this.userService.getProfile()
+      .subscribe(userData => {
+         this.role = userData.user.role
+      })
   }
 
 }

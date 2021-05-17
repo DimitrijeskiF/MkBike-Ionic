@@ -17,6 +17,7 @@ export class Tab1Page implements OnInit {
   events: Event[] = [];
   news: News[] = [];
   username;
+  role;
 
   constructor(
     private authService: AuthService,
@@ -41,15 +42,29 @@ export class Tab1Page implements OnInit {
     this.events = await (await (this.eventsService.getEvents())).events
   }
 
+  onDeleteEvent(eventId: string) {
+    this.eventsService.deleteEvent(eventId)
+      .subscribe(() => {
+        this.onGetEvents();
+      })
+  }
+
   async onGetNews() {
     this.news = await (await (this.newsService.getNews())).news;
-    console.log(this.news);
+  }
+
+  onDeleteNews(newsId: string) {
+    this.newsService.deleteNews(newsId)
+      .subscribe(() => {
+          this.onGetNews();
+      })
   }
 
   onGetUserName() {
     this.userService.getProfile()
       .subscribe((userData) => {
         this.username = userData.user.firstName;
+        this.role = userData.user.role
       })
   }
 

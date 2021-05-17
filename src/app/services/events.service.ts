@@ -18,12 +18,13 @@ export class EventsService {
 
 
   getEvents() {
-   return this.http.get<{ events: any }>(this.BACKEND_URL + '/events')
+    return this.http.get<{ events: any }>(this.BACKEND_URL + '/events')
       .pipe(
         map((eventDate) => {
           return {
             events: eventDate.events.map(event => {
               return {
+                id: event._id,
                 title: event.title,
                 description: event.description,
                 date: event.date,
@@ -34,5 +35,9 @@ export class EventsService {
           }
         })
       ).toPromise()
+  }
+
+  deleteEvent(eventId: string) {
+   return this.http.delete(this.BACKEND_URL + `/events/${eventId}`);
   }
 }
