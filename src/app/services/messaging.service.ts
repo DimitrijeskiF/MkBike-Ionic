@@ -36,4 +36,14 @@ export class MessagingService {
     }
     this.http.post(this.BACKEND_URL + '/fcmTokens', token).subscribe()
   }
+
+  sendMsg() {
+    this.http.post(this.BACKEND_URL + '/notification/event', null)
+      .subscribe();
+  }
+
+  sendNewsMsg() {
+    this.http.post(this.BACKEND_URL + '/notification/news', null)
+      .subscribe();
+  }
 }

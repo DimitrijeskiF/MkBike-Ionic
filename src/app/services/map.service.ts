@@ -80,6 +80,14 @@ export class MapService {
     this.setUserCoords(this.lng, this.lat);
   }
 
+  addPoint(address: string) {
+    const pointData = {
+      address: address
+    }
+
+    return this.http.post(this.BACKEND_URL + '/points', pointData);
+  }
+
 
 
   setCoords(lng, lat) {

@@ -21,7 +21,11 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'menage',
+    loadChildren: () => import('./pages/menage/menage.module').then( m => m.MenagePageModule)
   },
+
 
 
 

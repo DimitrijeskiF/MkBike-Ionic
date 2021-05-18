@@ -1,0 +1,42 @@
+<ion-card>
+  <ion-card-title class="ion-text-center">Add News</ion-card-title>
+  <form (submit)="onAddNews(newsForm)" #newsForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="title"
+          ngModel
+          #title="ngModel"
+          name="title"
+          placeholder="News Title"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          type="text"
+          id="content"
+          ngModel
+          #content="ngModel"
+          name="content"
+          placeholder="Content"
+          ngDefaultControl
+          rows="5"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="img"
+          ngModel
+          #img="ngModel"
+          name="img"
+          placeholder="News Photo"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit">Add News</ion-button>
+    </ion-list>
+  </form>
+</ion-card>

@@ -1,0 +1,65 @@
+<ion-card>
+  <ion-card-title class="ion-text-center">Add Event</ion-card-title>
+  <form (submit)="onAddEvent(eventForm)" #eventForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="title"
+          ngModel
+          #title="ngModel"
+          name="title"
+          placeholder="Event Title"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="description"
+          ngModel
+          #description="ngModel"
+          name="description"
+          placeholder="Event Description"
+          ngDefaultControl
+
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="date"
+          ngModel
+          #date="ngModel"
+          name="date"
+          placeholder="Event Date"
+          ngDefaultControl
+
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="link"
+          ngModel
+          #link="ngModel"
+          name="link"
+          placeholder="Event Link"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="thumbnail"
+          ngModel
+          #thumbnail="ngModel"
+          name="thumbnail"
+          placeholder="Event Thumbnail"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit">Add Event</ion-button>
+    </ion-list>
+  </form>
+</ion-card>

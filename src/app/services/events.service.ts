@@ -1,3 +1,4 @@
+import { MessagingService } from './messaging.service';
 import { map } from 'rxjs/operators';
 import { Event } from './../models/event';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +14,7 @@ export class EventsService {
 
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
 
@@ -37,7 +38,18 @@ export class EventsService {
       ).toPromise()
   }
 
+  addEvent(title: string, description: string, date: Date, link: string, thumbnail: string) {
+    const eventData: Event = {
+      title: title,
+      description: description,
+      date: date,
+      link: link,
+      thumbnail: thumbnail
+    }
+    return this.http.post(this.BACKEND_URL + '/events', eventData);
+  }
+
   deleteEvent(eventId: string) {
-   return this.http.delete(this.BACKEND_URL + `/events/${eventId}`);
+    return this.http.delete(this.BACKEND_URL + `/events/${eventId}`);
   }
 }

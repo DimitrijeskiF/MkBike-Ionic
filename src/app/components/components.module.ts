@@ -1,3 +1,7 @@
+import { FormsModule } from '@angular/forms';
+import { AddPointComponent } from './add-point/add-point.component';
+import { AddNewsComponent } from './add-news/add-news.component';
+import { AddEventComponent } from './add-event/add-event.component';
 import { RetireeComponent } from './retiree/retiree.component';
 import { WrokerComponent } from './wroker/wroker.component';
 import { YoungComponent } from './young/young.component';
@@ -14,13 +18,24 @@ import { CommonModule } from '@angular/common';
     ButtonComponent,
     YoungComponent,
     WrokerComponent,
-    RetireeComponent
+    RetireeComponent,
+    AddEventComponent,
+    AddNewsComponent,
+    AddPointComponent,
   ],
-  exports: [SlidesComponent, ButtonComponent, YoungComponent,
+  exports: [
+    SlidesComponent,
+    ButtonComponent,
+    YoungComponent,
     WrokerComponent,
-    RetireeComponent],
+    RetireeComponent,
+    AddEventComponent,
+    AddNewsComponent,
+    AddPointComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }

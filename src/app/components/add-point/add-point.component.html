@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-title class="ion-text-center">Add Point</ion-card-title>
+  <form (submit)="onAddPoint(pointForm)" #pointForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          type="text"
+          id="address"
+          ngModel
+          #address="ngModel"
+          name="address"
+          placeholder="Address"
+          ngDefaultControl
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit">Add Address</ion-button>
+    </ion-list>
+  </form>
+</ion-card>

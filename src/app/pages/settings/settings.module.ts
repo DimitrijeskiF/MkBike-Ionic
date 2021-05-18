@@ -14,6 +14,7 @@ import { SettingsPage } from './settings.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    FormsModule,
     SettingsPageRoutingModule,
     UsersPageRoutingModule
   ],
