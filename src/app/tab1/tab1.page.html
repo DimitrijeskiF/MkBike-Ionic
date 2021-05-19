@@ -13,10 +13,9 @@
 
   <ion-list>
     <ion-title>Weekly Events:</ion-title>
-    <ion-card *ngIf="!events">
-      <ion-card-content>There are no events this week! </ion-card-content>
+     <ion-card *ngIf="!events.length > 0">
+        <ion-card-content>There are no events this week! </ion-card-content>
     </ion-card>
-
     <ion-item *ngFor="let event of events">
       <ion-avatar slot="start">
         <img [src]="event.thumbnail" />
@@ -41,6 +40,9 @@
 
   <ion-list>
     <ion-title>News About Mk Bike:</ion-title>
+     <ion-card *ngIf="!news.length > 0">
+        <ion-card-content>There are no news! </ion-card-content>
+    </ion-card>
     <ion-card *ngFor="let news of news">
       <img [src]="news.img" />
       <ion-card-header>

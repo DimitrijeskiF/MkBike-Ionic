@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MessagingService } from './../../services/messaging.service';
 import { NewsService } from './../../services/news.service';
 import { NgForm } from '@angular/forms';
@@ -12,7 +13,8 @@ export class AddNewsComponent implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private msgService: MessagingService
+    private msgService: MessagingService,
+    private router: Router
   ) { }
 
   ngOnInit() {}
@@ -26,6 +28,7 @@ export class AddNewsComponent implements OnInit {
     ).subscribe(() => {
       this.newsService.getNews();
       this.msgService.sendNewsMsg();
+      this.router.navigate(['/tabs']);
     })
   }
 }

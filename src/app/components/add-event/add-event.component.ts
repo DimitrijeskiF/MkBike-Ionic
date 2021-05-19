@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MessagingService } from './../../services/messaging.service';
 import { EventsService } from './../../services/events.service';
 import { NgForm } from '@angular/forms';
@@ -12,7 +13,8 @@ export class AddEventComponent implements OnInit {
 
   constructor(
     private eventService: EventsService,
-    private messagingService: MessagingService
+    private messagingService: MessagingService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -27,6 +29,7 @@ export class AddEventComponent implements OnInit {
       ).subscribe(() => {
         this.eventService.getEvents();
         this.messagingService.sendMsg();
+        this.router.navigate(['/tabs'])
       })
 }
 }

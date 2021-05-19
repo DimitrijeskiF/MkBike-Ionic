@@ -4,6 +4,7 @@ import { Event } from './../models/event';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { environment } from 'src/environments/environment';
 export class EventsService {
 
   BACKEND_URL = environment.uri;
-
+  events: Event[] = [];
+  private eventListener = new Subject<{events: Event[]}>();
 
   constructor(
     private http: HttpClient,
@@ -19,7 +21,7 @@ export class EventsService {
 
 
   getEvents() {
-    return this.http.get<{ events: any }>(this.BACKEND_URL + '/events')
+  this.http.get<{ events: any }>(this.BACKEND_URL + '/events')
       .pipe(
         map((eventDate) => {
           return {
@@ -35,7 +37,14 @@ export class EventsService {
             })
           }
         })
-      ).toPromise()
+      ).subscribe((transformedData) => {
+        this.events = transformedData.events;
+        this.eventListener.next({events: [...this.events]});
+      })
+  }
+
+  getEventsListener() {
+    return this.eventListener.asObservable();
   }
 
   addEvent(title: string, description: string, date: Date, link: string, thumbnail: string) {
@@ -52,4 +61,5 @@ export class EventsService {
   deleteEvent(eventId: string) {
     return this.http.delete(this.BACKEND_URL + `/events/${eventId}`);
   }
+
 }

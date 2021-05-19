@@ -28,9 +28,10 @@ export class Tab1Page implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.onGetUserName();
     this.onGetEvents();
     this.onGetNews();
+    this.onGetUserName();
+
   }
 
 
@@ -38,25 +39,33 @@ export class Tab1Page implements OnInit {
     this.router.navigate(['/settings'])
   }
 
-  async onGetEvents() {
-    this.events = await (await (this.eventsService.getEvents())).events
+  onGetEvents() {
+    this.eventsService.getEvents()
+    this.eventsService.getEventsListener()
+      .subscribe((eventData: { events: Event[] }) => {
+        this.events = eventData.events
+      })
   }
 
   onDeleteEvent(eventId: string) {
     this.eventsService.deleteEvent(eventId)
       .subscribe(() => {
-        this.onGetEvents();
+        this.eventsService.getEvents();
       })
   }
 
-  async onGetNews() {
-    this.news = await (await (this.newsService.getNews())).news;
+  onGetNews() {
+    this.newsService.getNews()
+    this.newsService.getNewsListener()
+      .subscribe((newsData: { news: News[] }) => {
+        this.news = newsData.news;
+      })
   }
 
   onDeleteNews(newsId: string) {
     this.newsService.deleteNews(newsId)
       .subscribe(() => {
-          this.onGetNews();
+        this.newsService.getNews()
       })
   }
 
