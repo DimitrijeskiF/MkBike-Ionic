@@ -1,3 +1,5 @@
+import { GlobalService } from './../services/global.service';
+import { MessagingService } from './../services/messaging.service';
 import { NewsService } from './../services/news.service';
 import { UserService } from './../services/user.service';
 import { EventsService } from './../services/events.service';
@@ -24,14 +26,16 @@ export class Tab1Page implements OnInit {
     private router: Router,
     private eventsService: EventsService,
     private userService: UserService,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private messagingService: MessagingService,
+    private globalService: GlobalService
   ) { }
 
   ngOnInit() {
     this.onGetEvents();
     this.onGetNews();
     this.onGetUserName();
-
+    this.requestPermission();
   }
 
 
@@ -44,6 +48,8 @@ export class Tab1Page implements OnInit {
     this.eventsService.getEventsListener()
       .subscribe((eventData: { events: Event[] }) => {
         this.events = eventData.events
+      }, async (error) => {
+        await this.globalService.handleErrorMessage(error.error.message)
       })
   }
 
@@ -59,6 +65,8 @@ export class Tab1Page implements OnInit {
     this.newsService.getNewsListener()
       .subscribe((newsData: { news: News[] }) => {
         this.news = newsData.news;
+      }, async (error) => {
+        await this.globalService.handleErrorMessage(error.error.message)
       })
   }
 
@@ -75,6 +83,11 @@ export class Tab1Page implements OnInit {
         this.username = userData.user.firstName;
         this.role = userData.user.role
       })
+  }
+
+
+  requestPermission() {
+    this.messagingService.requestPermission().subscribe()
   }
 
 }

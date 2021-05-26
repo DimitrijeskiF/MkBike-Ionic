@@ -26,7 +26,6 @@ export class AuthService {
     private router: Router,
     private storage: Storage,
     private platform: Platform,
-    private alertController: AlertController
   ) {
     this.platform.ready()
       .then(() => {
@@ -61,10 +60,8 @@ export class AuthService {
       password: password
     }
 
-    this.http.post<{ token: string, error: any }>(this.BACKEND_URL + "/users", authData)
-      .subscribe(response => {
-        this.router.navigate(["/login"]);
-      })
+   return this.http.post<{message:string}>(this.BACKEND_URL + "/users", authData)
+
   }
 
 
@@ -98,8 +95,4 @@ export class AuthService {
   isAuthenticated() {
     return this.authenticationState.value;
   }
-
-
-
-
 }

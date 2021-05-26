@@ -40,14 +40,10 @@ export class AppComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/tabs'])
     }
-    this.requestPermission();
   }
 
 
-  requestPermission() {
-    this.messagingService.requestPermission().subscribe(
-    );
-  }
+
 
 
   onDisplayNotification() {

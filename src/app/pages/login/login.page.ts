@@ -1,6 +1,8 @@
+import { AlertController } from '@ionic/angular';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { GlobalService } from 'src/app/services/global.service';
 
 
 @Component({
@@ -11,16 +13,20 @@ import { NgForm } from '@angular/forms';
 export class LoginPage implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private globalService: GlobalService,
   ) { }
 
   ngOnInit() {
   }
 
-  onLogin(form: NgForm) {
+  async onLogin(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.authService.login(form.value.email, form.value.password).subscribe();
+    this.authService.login(form.value.email, form.value.password).subscribe(() => { },
+      async (error) => {
+        await this.globalService.handleErrorMessage(error.error.message);
+      });
   }
 }
