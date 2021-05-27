@@ -1,13 +1,10 @@
 ion-content {
   display: flex;
-  --flex-direction: column;
-  --height: 200vh;
+  flex-direction: column;
+  height: 240vh;
 }
 
 ion-note {
   font-size: 15px;
 }
 
-ion-button {
-
-}
