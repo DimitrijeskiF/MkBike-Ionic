@@ -34,7 +34,7 @@ export class MessagingService {
     const token = {
       fcmToken: fcmToken
     }
-    this.http.post(this.BACKEND_URL + '/fcmTokens', token).subscribe()
+    this.http.post(this.BACKEND_URL + '/users/fcmToken', token).subscribe()
   }
 
   sendMsg() {

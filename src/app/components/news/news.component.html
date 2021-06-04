@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="toTabs()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="!news.length > 0">
+    <ion-card-content>There are no news! </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let news of news">
+    <img [src]="news.img" />
+    <ion-card-header>
+      <ion-card-title>{{ news.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> {{ news.content }} </ion-card-content>
+    <ion-button
+      *ngIf="role == 'admin'"
+      (click)="onDeleteNews(news.id)"
+      expand="full"
+      color="danger"
+    >
+      <ion-icon name="trash" slot="end"></ion-icon>
+      Delete News
+    </ion-button>
+  </ion-card>
+   <mat-paginator
+    *ngIf="news.length > 0"
+    [length]="totalNews"
+    [pageSize]="postsPerPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangePage($event)"
+  >
+  </mat-paginator>
+</ion-content>

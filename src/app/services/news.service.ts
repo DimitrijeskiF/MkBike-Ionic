@@ -14,7 +14,7 @@ export class NewsService {
 
   BACKEND_URL = environment.uri;
   news: News[] = [];
-  private newsListener = new Subject<{ news: News[] }>()
+  private newsListener = new Subject<{ news: News[], newsCount: number }>()
 
 
   constructor(
@@ -23,8 +23,10 @@ export class NewsService {
 
 
 
-  getNews() {
-    this.http.get<{ news: any }>(this.BACKEND_URL + '/news')
+  getNews(postsPerPage: number, currentPage: number) {
+    const queryParams = `?limit=${postsPerPage}&page=${currentPage}`;
+    console.log(queryParams);
+    this.http.get<{ news: any, count: number }>(this.BACKEND_URL + '/news' + queryParams)
       .pipe(
         map((newsData) => {
           return {
@@ -35,12 +37,13 @@ export class NewsService {
                 img: news.img,
                 content: news.content
               }
-            })
+            }),
+            maxNews: newsData.count
           }
         })
       ).subscribe((transformedData) => {
         this.news = transformedData.news;
-        this.newsListener.next({ news: [...this.news] });
+        this.newsListener.next({ news: [...this.news], newsCount: transformedData.maxNews });
       })
   }
 

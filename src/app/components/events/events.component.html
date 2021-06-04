@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="toTabs()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngIf="!events.length > 0">
+      <ion-card-content>There are no events this week! </ion-card-content>
+    </ion-card>
+    <ion-item *ngFor="let event of events">
+      <ion-avatar slot="start">
+        <img [src]="event.thumbnail" />
+      </ion-avatar>
+      <ion-label>
+        <p class="title">{{ event.title }}</p>
+        <p>{{ event.description }}</p>
+        <p>Date: {{ event.date | date }}</p>
+        <a [href]="event.link" target="_blank">View More</a>
+      </ion-label>
+      <ion-button
+        *ngIf="role == 'admin'"
+        slot="end"
+        color="danger"
+        type="clear"
+        size="medium"
+        (click)="onDeleteEvent(event.id)"
+        ><ion-icon name="trash"></ion-icon
+      ></ion-button>
+    </ion-item>
+    <mat-paginator
+    *ngIf="events.length > 0"
+    [length]="totalEvents"
+    [pageSize]="postsPerPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangePage($event)"
+  >
+  </mat-paginator>
+  </ion-list>
+
+
+</ion-content>

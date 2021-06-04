@@ -1,9 +1,11 @@
+import { NewsComponent } from './components/news/news.component';
+import { EventsComponent } from './components/events/events.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { SignupPageModule } from './pages/signup/signup.module';
 import { SignupPageRoutingModule } from './pages/signup/signup-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -14,10 +16,13 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireMessagingModule } from '@angular/fire/messaging'
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EventsComponent, NewsComponent],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),
@@ -26,6 +31,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging'
     FormsModule,
     HttpClientModule,
     BrowserModule,
+    HammerModule,
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('combined-sw.js', {
       enabled: environment.production,
@@ -35,6 +41,8 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging'
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [
     Storage,

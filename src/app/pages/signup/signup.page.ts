@@ -28,6 +28,9 @@ export class SignupPage implements OnInit {
       return;
     }
 
+    console.log(form.value);
+
+
     this.authService.createUser(form.value.firstName, form.value.lastName, form.value.sex, form.value.ages, form.value.email, form.value.password).subscribe(async (response) => {
       await this.globalService.handleSuccessMessage(response.message)
       this.router.navigate(["/login"]);

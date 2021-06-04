@@ -70,3 +70,22 @@ ion-item {
     text-decoration: none;
   }
 }
+
+.radio-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: grey;
+  font-size: 17px;
+  margin: 20px;
+}
+
+.gender {
+  display: flex;
+  flex-direction: column;
+ h6{
+   font-size: 17px;
+   color: gray;
+   margin-left: 20px;
+ }
+}

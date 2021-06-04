@@ -20,6 +20,8 @@ export class Tab1Page implements OnInit {
   news: News[] = [];
   username;
   role;
+  postsPerPage = 2
+
 
   constructor(
     private authService: AuthService,
@@ -36,6 +38,7 @@ export class Tab1Page implements OnInit {
     this.onGetNews();
     this.onGetUserName();
     this.requestPermission();
+    this.userService.getUserId();
   }
 
 
@@ -44,7 +47,7 @@ export class Tab1Page implements OnInit {
   }
 
   onGetEvents() {
-    this.eventsService.getEvents()
+    this.eventsService.getEvents(this.postsPerPage, 1)
     this.eventsService.getEventsListener()
       .subscribe((eventData: { events: Event[] }) => {
         this.events = eventData.events
@@ -56,12 +59,12 @@ export class Tab1Page implements OnInit {
   onDeleteEvent(eventId: string) {
     this.eventsService.deleteEvent(eventId)
       .subscribe(() => {
-        this.eventsService.getEvents();
+        // this.eventsService.getEvents();
       })
   }
 
   onGetNews() {
-    this.newsService.getNews()
+    this.newsService.getNews(1,1)
     this.newsService.getNewsListener()
       .subscribe((newsData: { news: News[] }) => {
         this.news = newsData.news;
@@ -73,7 +76,7 @@ export class Tab1Page implements OnInit {
   onDeleteNews(newsId: string) {
     this.newsService.deleteNews(newsId)
       .subscribe(() => {
-        this.newsService.getNews()
+        this.newsService.getNews(1,1)
       })
   }
 

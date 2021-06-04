@@ -39,17 +39,6 @@
     <ion-item class="ion-margin-bottom">
       <ion-input
         autocomplete="off"
-        type="text"
-        id="sex"
-        ngModel
-        #sex="ngModel"
-        name="sex"
-        placeholder="Gender"
-      ></ion-input>
-    </ion-item>
-    <ion-item class="ion-margin-bottom">
-      <ion-input
-        autocomplete="off"
         type="number"
         class="form-control"
         id="ages"
@@ -86,6 +75,17 @@
         placeholder="Password"
       ></ion-input>
     </ion-item>
+      <div class="gender">
+        <h6>Gender</h6>
+        <div class="radio-button">
+          <input type="radio" id="male" name="sex" value="Male" ngModel />
+          <label for="male">Male</label><br />
+          <input type="radio" id="female" name="sex" value="Female" ngModel />
+          <label for="female">Female</label><br />
+          <input type="radio" id="other" name="sex" value="Other" ngModel />
+          <label for="other">Other</label>
+        </div>
+      </div>
     <ion-button
       expand="block"
       shape="round"

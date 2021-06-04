@@ -13,15 +13,16 @@ export class EventsService {
 
   BACKEND_URL = environment.uri;
   events: Event[] = [];
-  private eventListener = new Subject<{events: Event[]}>();
+  private eventListener = new Subject<{ events: Event[], eventsCount: number }>();
 
   constructor(
     private http: HttpClient,
   ) { }
 
 
-  getEvents() {
-  this.http.get<{ events: any }>(this.BACKEND_URL + '/events')
+  getEvents(postsPerPage: number, currentPage: number) {
+    const queryParams = `?limit=${postsPerPage}&page=${currentPage}`;
+    this.http.get<{ events: any, count: number }>(this.BACKEND_URL + '/events' + queryParams)
       .pipe(
         map((eventDate) => {
           return {
@@ -34,12 +35,14 @@ export class EventsService {
                 link: event.link,
                 thumbnail: event.thumbnail
               }
-            })
+            }),
+            maxEvents: eventDate.count,
           }
         })
       ).subscribe((transformedData) => {
         this.events = transformedData.events;
-        this.eventListener.next({events: [...this.events]});
+
+        this.eventListener.next({ events: [...this.events], eventsCount: transformedData.maxEvents });
       })
   }
 

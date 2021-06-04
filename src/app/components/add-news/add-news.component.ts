@@ -26,7 +26,7 @@ export class AddNewsComponent implements OnInit {
       form.value.content,
       form.value.img
     ).subscribe(() => {
-      this.newsService.getNews();
+      // this.newsService.getNews();
       this.msgService.sendNewsMsg();
       this.router.navigate(['/tabs']);
     })

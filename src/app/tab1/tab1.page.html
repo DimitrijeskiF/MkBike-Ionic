@@ -10,11 +10,10 @@
       <h2>Welcome {{username}}!</h2>
     </div>
   </div>
-
   <ion-list>
     <ion-title>Weekly Events:</ion-title>
-     <ion-card *ngIf="!events.length > 0">
-        <ion-card-content>There are no events this week! </ion-card-content>
+    <ion-card *ngIf="!events.length > 0">
+      <ion-card-content>There are no events this week! </ion-card-content>
     </ion-card>
     <ion-item *ngFor="let event of events">
       <ion-avatar slot="start">
@@ -36,12 +35,14 @@
         ><ion-icon name="trash"></ion-icon
       ></ion-button>
     </ion-item>
+
+    <ion-button routerLink="/events">View all events</ion-button>
   </ion-list>
 
   <ion-list>
     <ion-title>News About Mk Bike:</ion-title>
-     <ion-card *ngIf="!news.length > 0">
-        <ion-card-content>There are no news! </ion-card-content>
+    <ion-card *ngIf="!news.length > 0">
+      <ion-card-content>There are no news! </ion-card-content>
     </ion-card>
     <ion-card *ngFor="let news of news">
       <img [src]="news.img" />
@@ -59,5 +60,6 @@
         Delete News
       </ion-button>
     </ion-card>
+    <ion-button routerLink="/news">View News</ion-button>
   </ion-list>
 </ion-content>

@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
   BACKEND_URL = environment.uri;
+  id;
 
   constructor(
     private http: HttpClient,
@@ -18,20 +20,27 @@ export class UserService {
     return this.http.get<{ user: any }>(this.BACKEND_URL + '/users/me')
   }
 
+  getUserId(){
+    this.http.get<{ user: any }>(this.BACKEND_URL + '/users/me').subscribe(userData => {
+      this.id = userData.user._id
+    })
+  }
+
+
   uploadProfilePicture(pic: FormData) {
-    return this.http.post(this.BACKEND_URL + '/users/me/image', pic)
+    return this.http.put(this.BACKEND_URL + '/users/'+ this.id+ '/photo', pic)
       .subscribe(res => { });
   }
 
   /*Admin Functions*/
 
   getUsers() {
-   return this.http.get<{ users: any }>(this.BACKEND_URL + '/admin')
+    return this.http.get<{ users: any }>(this.BACKEND_URL + '/admin')
       .pipe(
         map((userData) => {
           return {
             users: userData.users.map(user => {
-              return{
+              return {
                 id: user._id,
                 firstName: user.firstName,
                 lastName: user.lastName,
