@@ -59,7 +59,7 @@ export class Tab1Page implements OnInit {
   onDeleteEvent(eventId: string) {
     this.eventsService.deleteEvent(eventId)
       .subscribe(() => {
-        // this.eventsService.getEvents();
+        this.eventsService.getEvents(2,1);
       })
   }
 

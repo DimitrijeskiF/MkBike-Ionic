@@ -11,7 +11,7 @@
     </div>
   </div>
   <ion-list>
-    <ion-title>Weekly Events:</ion-title>
+    <ion-title>Weekly Events: </ion-title>
     <ion-card *ngIf="!events.length > 0">
       <ion-card-content>There are no events this week! </ion-card-content>
     </ion-card>
@@ -35,10 +35,10 @@
         ><ion-icon name="trash"></ion-icon
       ></ion-button>
     </ion-item>
-
-    <ion-button routerLink="/events">View all events</ion-button>
+    <ion-router-link color="primary" routerLink="/events"
+      >View all Events</ion-router-link
+    >
   </ion-list>
-
   <ion-list>
     <ion-title>News About Mk Bike:</ion-title>
     <ion-card *ngIf="!news.length > 0">
@@ -60,6 +60,8 @@
         Delete News
       </ion-button>
     </ion-card>
-    <ion-button routerLink="/news">View News</ion-button>
+    <ion-router-link color="primary" routerLink="/news"
+      >View all News</ion-router-link
+    >
   </ion-list>
 </ion-content>

@@ -27,7 +27,7 @@ export class AddEventComponent implements OnInit {
         form.value.link,
         form.value.thumbnail
       ).subscribe(() => {
-        // this.eventService.getEvents();
+        this.eventService.getEvents(2,1);
         this.messagingService.sendMsg();
         this.router.navigate(['/tabs'])
       })
